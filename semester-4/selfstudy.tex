@@ -1,0 +1,59 @@
+\lecture{20}{20 April 2022}{exam self study}
+\begin{exercise}
+  Let $f: U \to \C$ be holomorphic on $U \subseteq \C$, with $z_{0} \in U$. A powerseries for $f$ with radius of convergence $R$ is given by $f(z) = \sum_{k=0}^{\infty} a_{n}(z-z_{0})^{n}$. Show:
+\begin{enumerate}[i)]
+    \item $g: \bar{U} \to \C, z \mapsto \bar{f(\bar{z})}$ is holomorphic
+    \item Give a power series expansion for $g$ in $\bar{z_{0}} \in \bar{U}$, and its radius of convergence
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}[i)]
+  \item Since $g$ is holomorphic it satisfies the cauchy reimann equations, so
+        \begin{align*}
+          \frac{\partial}{\partial x}u(x, y) &= \frac{\partial}{\partial y} v(x, y) \\
+          \frac{\partial }{\partial y} u(x, y) &= - \frac{\partial}{\partial x} v(x, y)
+        \end{align*}
+        Since $g: x + iy \mapsto \overline{f(x - iy)} = u(x, -y) - iv(x, -y) = \hat{u}(x, y) + \hat{v}(x, y)$. $g$ also satisfies these equations.
+  \item Suppose $\overline{z} \in U$ then
+        \begin{equation}
+          g(z) =\overline{\sum_{k=1}^\infty a_{k}(\overline{z} - z_{0})^{n}} = \sum_{k=1}^\infty \overline{a_{k}}\overline{(\overline{z} - z_{0})^{n}} = \sum_{k=1}^\infty \overline{a_{k}}(z - \overline{z_{0}})^{n}
+        \end{equation}
+        From this it also follows that the radius of convergence is the same
+\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+  Let $f(z) = \exp{1 - z}$, $g(z) = z^{3}(1 - z)$ and $h(z) = \frac{f(z)}{g(z)}$. Compute the curve intergral
+  \begin{equation}
+    \int_{\partial B(0, 1/2)} h(z) dz
+  \end{equation}
+\end{exercise}
+\begin{proof}
+  We have one singular point inside the ball at $0$, and this singularity has order $3$, we compute
+  \begin{align*}
+    Res(h, 0) &= \frac{\frac{d^{3 - 1}}{d z^{3 - 1}}(z - a)^{3}h(a)}{(3 - 1)!} \\
+  \end{align*}
+
+
+
+  We have singular points on the outside of the ball at $0$ with radi $1/2$. Thus we know that $f$ is holomorphic on $B(0, 1/2)$, since its the quotient of two holomorphic functions. This implies that $f$ has a primitive and since $\partial B(0, 1/2)$ is a closed circuit $\int_{\partial B(0, 1/2)} f(z) dz = 0$.
+\end{proof}
+
+\begin{exercise}
+Let $f, g U \to \C$ be holomorphic functions on the domain $U \subseteq \C$, and let $z_{0} \in U$, be a root of order $n$ of $f$ and $m$ og $g$, let $h(z) = \frac{f(z)}{g(z)}$. Show that \begin{enumerate}[i)]
+\item If $n \geq m$. Then $h$ has a removable singularity in $z_{0}$ and $\lim_{z \to z_{0}} h(z) = \frac{f^{(m)}(z_{0})}{g^{(m)}(z_{0})}$.
+
+\item $n > m$. Then $h$ has a pole of order $m - n$ in $z_{0}$.
+\end{enumerate}
+\end{exercise}
+\begin{proof}
+\begin{enumerate}[i)]
+  \item Assumme $n \geq m$, then we apply l'hopital \textbf{Maybe dont use l'hopital, instead use the definition of the derivative of f and g} $m$ times to optain
+
+\begin{equation*}
+  \lim_{z \to z_{0}} h(z) = \lim_{z \to z_{0}} \frac{f(z)}{g(z)} = \lim_{z \to z_{0}} \frac{f^{(m)}(z)}{g^{(m)}(z)}
+\end{equation*}
+        but $z_{0}$ is not a pole of $f^{(m)}$ and $g^{(m)}$, since these are holomorphic, they are also continus, and thus $\lim_{z \to z_{0}} \frac{f^{(m)}(z)}{g^{(m)}(z)} =\frac{f^{(m)}(z_{0})}{g^{(m)}(z_{0})} = c$. Now let $\varepsilon > 0$, then by the limit there exists $\delta > 0$ st. $\norm{z - z_{0}} \implies \norm{h(z) - c} < \varepsilon$, thus $\norm{h(z)} < \norm{c} + \varepsilon$, and the function $h$ is bounded on the ball $B(z_{0}, \delta)$, and the pole is removable. by theorem 7.6
+        \item Now assume $n < m$, then $f(z) = (z - z_{0})^{m} f_{1}(z)$ og $g(z) = (z - z_{0})^{n} g_{1}(z)$, hvor $f_{1}(z_{0}), g_{1}(z_{0}) \neq 0$, $g_{1}, f_{1} \in H(G)$. then $\frac{f(z)}{g(z)} = (z-z_{0})^{m - n} \frac{f_{1}(z)}{g_{1}(z)}$, and from this we get $\lim_{z \to z_{0}} (z - z_{0})^{n - m} \frac{f(z)}{g(z)} = \frac{f_{1}(z_{0})}{g_{1}(z_{0})} \neq 0$
+\end{enumerate}
+\end{proof}

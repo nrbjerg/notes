@@ -1,0 +1,43 @@
+\chapter{1: Basics of probability}
+\begin{definition}
+  Let $B$ be an event st. $P(B) > 0$, then for $A \subseteq S$, we definie \textbf{conditional} probability of $A$ given $B$ as
+  \begin{equation*}
+    P(A | B) = \frac{P(A \cap B)}{P(B)}
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}[Law of total probability and Bayes formula]
+  Let $B_{1}, B_{2}, \ldots$, be sequence of events such that.
+  \begin{enumerate}[i)]
+    \item $P(B_k) > 0 \; \forall k \in \N$
+        \item $B_{1}, B_{2}, \ldots$ \textbf{partion} the \textbf{sample space} $S$.
+  \end{enumerate}
+  Then for any $A \subseteq S$ we have
+  \begin{enumerate}[i)]
+    \item Law of total probability:
+      \begin{equation*}
+          P(A) = \sum_{k=1}^{\infty}P(A | B_{k}) P(b_{k})
+      \end{equation*}
+    \item Assuming $P(A) > 0$, then $\forall n \in \N$ we have
+      \begin{equation*}
+        P(B_{n} | A) = \frac{P(A|B_{n})P(B_{n})}{\sum_{k=1}^{\infty} P(A|B_{k})P(B_{k})}
+      \end{equation*}
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  We have $A = A \cap S = A \cap \left( \bigcup_{k=1}^{\infty} B_{k} \right) = \bigcup_{k=1}^{\infty} A \cap B_{k}$.
+  By the \textbf{distributive law of infinite unions}, however $(A \cap B_{i}) \cap (A \cap B_{j}) = \emptyset$, \textbf{pairwise disjoint}. So
+  \begin{equation*}
+    P(A) \stackrel{(a)}= \sum_{k=1}^{\infty} P(A \cap B_{k}) \stackrel{(b)}= sum_{k=1}^{\infty} P(A | B_{k}) P(B_{k})
+  \end{equation*}
+  Where $(a)$ follows from the \textbf{3. Axiom of probability} and $(b)$ from the \textbf{definition of the conditional probability}. This proves the law of total probability. \\
+  Now assume $P(A) > 0$ we have
+  \begin{equation*}
+    P(A | B_{k}) P(B_{k}) = P(A \cap B_{k}) = P(B_{k} | A)P(A)
+  \end{equation*}
+  from the definition of conditional probability. This implies
+  \begin{equation*}
+    P(B_{k} | A) = \frac{P(A | B_{k})P(B_{k})}{P(A)} \stackrel{(c)}= \frac{P(A | B_{k})P(B_{k})}{\sum_{k=1}^{\infty} P(A | B_{k})P(B_{k})}
+  \end{equation*}
+  where $(c)$ follows from law of total probability.
+\end{proof}

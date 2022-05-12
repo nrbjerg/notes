@@ -1,0 +1,46 @@
+\chapter{Discrete random variables}
+\begin{definition}
+  Let $X$, be an \textbf{discrete stocastic random variable} with the \textbf{discrte} range $\{x_{1}, X_{2}, \ldots\}$ and define the function as
+  \begin{equation*}
+    p(x_{k}) = P(X = x_{k})
+  \end{equation*}
+  then, $p(x_{k})$ is definied as the \textbf{probability mass function}.
+\end{definition}
+
+\begin{definition}
+  Let $X$ have pmf
+  \begin{equation*}
+    p(k) = \lambda (1 - \lambda)^{k - 1}, k \in \N.
+  \end{equation*}
+  then $X$ is said to follow the \textbf{geometric distrobution} with parameter $\lambda > 0$ and we denote $X \sim \text{geom}(\lambda)$.
+\end{definition}
+
+\begin{theorem}
+  Let $\lambda > 0$ and $X \sim \text{geom}(\lambda)$, then
+  \begin{equation*}
+    E[X] = \frac{1}{\lambda}, \quad \text{var}[X] = \frac{1 - p}{p^{2}}.
+  \end{equation*}
+\end{theorem}
+\begin{proof} % TODO: Go back to the proof
+  It is a known result that $E{X} = \sum_{k=0}^{\infty} P(X > k)$. And thus we have
+  \begin{equation*}
+    E[X] = \sum_{k=0}^{\infty} P(X > k) = \sum_{k=0}^{\infty} (1 - p)^{k} = \frac{1}{p}
+  \end{equation*}
+  where we have that $P(X > k) = (1 - p)^{k}$, since we need to have atleast $k$ \textbf{indepependent failures}. Now we plan to use the fact that $var[X] = E[X^{2}] - E[X]^{2}$ and $E[X^{2}] = E[X] + E[X(X - 1)]$ (these are both known results) To get
+  \begin{align*}
+    E[X^{2}] &= E[X] + E[X(X-  1)] \\
+            &= \frac{1}{\lambda} + \sum_{k=0}^{\infty} k(k - 1) \lambda(1 - \lambda)^{k - 1}\\
+            &= \frac{1}{\lambda} + \lambda(1 - \lambda) \\
+            &=\frac{1}{\lambda} + \lambda(1-\lambda)\sum_{k=0}^{\infty}k(k-1)(1-\lambda)^{k-2}\\
+            &=\frac{1}{\lambda}+ \lambda(1-\lambda)\frac{2}{(1-(1-\lambda))^{3}} \\
+            &=\frac{2-\lambda}{\lambda^2}
+  \end{align*}
+  This now gives us
+  \begin{equation*}
+    Var[X] = E[X^{2}] - E[X]^{2} = \frac{2 - p}{p^{2}} - \left(\frac{1}{p}\right)^{2} = \frac{1 - p}{p^{2}}
+  \end{equation*}
+  which finishes the proof.
+\end{proof}
+\begin{remark}
+ Note that there is a way easier proof using the theory of \textbf{generating functions}
+\end{remark}

@@ -1,0 +1,20 @@
+% ENVIRONMENTS & THEIR CONFIGURATIONS
+\renewcommand{\qedsymbol}{$\blacksquare$} % Use a black box to end proofs
+
+% Custom environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\theoremstyle{definition}
+\newtheorem{DEFN}[theorem]{Definition}
+\newtheorem{EXMP}[theorem]{Example}
+\newenvironment{definition}{\begin{leftbar}\begin{DEFN}}{\end{DEFN}\end{leftbar}}
+\newenvironment{example}{\begin{EXMP}}{\hfill$\square$\end{EXMP}}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{note}{Note}
