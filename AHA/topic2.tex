@@ -1,0 +1,81 @@
+\chapter{DFT, herunder FFT}
+\begin{definition}
+  Lad $\mb{x} = [x_{0}, x_{1}, \ldots, x_{N - 1}]^{T} \in \C^{n}$, så er \textbf{den diskrete fouriertransformation (DFT)} er en invertibel lineær transformation
+  \begin{equation*}
+    \mathbf{F}: \C^{n} \to \C^{n}
+  \end{equation*}
+  defineret som
+  \begin{equation*}
+    \mb{F}(\mb{x})_{k} = X_{k} = \sum_{n=0}^{N-1} x_{n} W_{N}^{kn} \text{ for } k = 0, 1, \ldots, N - 1
+  \end{equation*}
+  hvor $W_{N} = \e^{- 2\pi / N}$.
+\end{definition}
+
+% Dette kan også skrives i matrix representation således:
+%
+% \begin{equation*}
+%   \mathbf{X} = \begin{bmatrix}
+%                  1 & 1 & 1 & \cdots & 1 \\
+%                  1 & W_{N} & W_N^{2} & \cdots & W_{N}^{N - 1} \\
+%                  1 & W_{N}^{2} & W_N^{4} & \cdots & W_{N}^{2(N - 1)} \\
+%                  \vdots & \vdots & \vdots & \ddots & \vdots \\
+%                  1 & W_{N}^{N - 1} & W_N^{2(N - 1)} & \cdots & W_{N}^{(N - 1)^{2}} \\
+%                \end{bmatrix} \mathbf{x}
+% \end{equation*}
+
+\begin{lemma}
+  Givet $[x_{0}, x_{1}, \ldots, x_{N - 1}]^{T}$, så gælder det for $0 \leq L \leq N$, at
+  \begin{equation*}
+    y_{n} = x_{<n-L>_{N}} \stackrel{DFT}\longleftrightarrow Y_{k} = X_{k}\e^{-2\pi i kL / N}
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}
+  Givet $\mb{x}=[x_{0}, x_{1}, \ldots x_{N - 1}]^{T}$ og $\mb{y} = [y_{0}, y_{1}, \ldots y_{N - 1}]^{T}$, så gælder det at
+  \begin{equation*}
+    \mb{z} = \mb{x} \circledast \mb{y} \stackrel{DFT}\longleftrightarrow Z_{k} = X_{k}Y_{k}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Vi har,
+  \begin{align*}
+    Z_{k} &= \sum_{n=0}^N z_{n} \e^{-2\pi i k n / N} \\
+          &= \sum_{n=0}^N \left(\sum_{m=0}^{N-1} x_{m} y_{<n-m>_{N}}\right)
+            \e^{-2\pi i k n/N} \\
+          &= \sum_{m=0}^{N-1} x_{m} \left(\sum_{n=0}^N y_{<n-m>_{N}}\e^{-2\pi i k n/N}\right) \\
+          &\stackrel{(a)}= \sum_{m=0}^{N-1} x_{m} \left(\e^{-2\pi i k m/N} Y_{k}\right) \\
+          &= \left(\sum_{m=0}^{N-1} x_{m} \e^{-2\pi i k m/N} \right) Y_{k} = X_{k}Y_{k}
+  \end{align*}
+  hvor $(a)$ følger af lemmaet.
+\end{proof}
+\begin{remark}
+  Filtertoeri ect. fungere altså derfor i dette DFT setup.
+\end{remark}
+Bemærk at \emph{FFT}'en gør det muligt at reducere fra $O(N^{2})$ operationer til $O(N \log(N))$ \\ \\
+\textbf{Fremgangs måde for FFT} Givet $\mathbf{x} = [x_{0}, x_{1}, \ldots x_{N - 1}]^{T}$, hvor $N$ er lige. Så har vi
+\begin{equation*}
+  X_{k} = \sum_{n = 0, 2, \ldots, N - 2} x_{k}  \e^{-2\pi i k n / N} + \sum_{n = 1, 3, \ldots, N - 1} x_{k}  \e^{-2\pi i k n / N}
+\end{equation*}
+sætter vi
+\begin{align*}
+x_{m}^{0} &= x_{2m}, \quad m = 0, 1, \ldots, \frac{N}{2} - 1\\
+x_{l}^{1} &= x_{2l + 1}, \quad l = 0, 1, \ldots , \frac{N}{2} - 1
+\end{align*}
+så fåes
+\begin{align*}
+  X_{k} &= \sum_{m = 0}^{\frac{N}{2} - 1} x^{0}_{m}  \e^{-2\pi i k m / N} + \sum_{l = 0}^{\frac{N}{2} - 1} x_{k}  \e^{-2\pi i k l / N} \\
+  &= X_{k}^{0} + \e^{2\pi i k / N}X_{k}^{1}, \text{ for } k = 0, 1, \ldots, N - 1
+\end{align*}
+Dette er en sum af to $n/2$ punkts DFT'er.
+Det smarte er nu at $X_{k}^{0}$ og $X_{k}^{1}$ er $\frac{N}{2}$-periodiske. Desuden har vi for $W_{N} = \e^{-2\pi i / N}$:
+\begin{equation*}
+  W^{k + \frac{N}{2}}_{N} = W_{N}^{k} \cdot W_{N}^{\frac{N}{2}} = -W_{N}^{k}
+\end{equation*}
+da $W_{N}^{\frac{N}{2}} = \e^{2\pi i \left(\frac{N}{2}\right) / 2} = \e^{- i \pi} = -1$.
+Det gælder derfor at:
+\begin{align*}
+X_{k} &= X_{k}^{0} + W_{N}^{k}X_{k}^{1}, \quad k = 0, 1, \ldots, \frac{N}{2} - 1 \\
+X_{k + \frac{N}{2}} &= X_{k}^{0} - W_{N}^{k}X_{k}^{1}, \quad k = 0, 1, \ldots, \frac{N}{2} - 1
+\end{align*}
+Vi får altså $X_{k + \frac{N}{2}}$ ``gratis''.

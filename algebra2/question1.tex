@@ -1,0 +1,30 @@
+\chapter*{1. Ideals, including maximal and prime ideals; ring homorphisms.}
+\begin{proposition}
+  Let $R$ be a comm. ring and let $I \subset R$, be an ideal. Then $I$ is a prime ideal if and only if $R/I$ is a domain.
+\end{proposition}
+
+\begin{proof}
+  ``$\implies$'' Ass. I is a prime ideal. Let $[a],[b] \in R/I$ st. $[a][b] = 0$, this implies $ab \in I$. $I$ is prime, thus $a \in I$ or $b \in I$ this implies that $[a] = 0$ or $[b] = 0$ in $R/I$ (thus we have no zero divisors.) \\
+  ``$\impliedby$'' Ass. $I$ is not prime, then $\exists a, b \in R$ st. $ab \in I$ but $a, b \not \in I$. Then $a + I \neq 0$ and $b + I \neq 0$  in $R/I$ but $ab + I = 0$. Hence $R/I$ is not a domain.
+\end{proof}
+
+\begin{proposition}
+  Let R be a comm. ring and $I \subset R$ and ideal. then $I$ is max iff $R/I$ is a field.
+\end{proposition}
+
+\begin{proof}
+  ``$\implies$'' Ass. $I$ is max and let $x \in R \setminus I$, then $x + I \neq 0$ in $R/I$ since $x \not \in I$. And $I$ is thus strictly contained in $xR + I$, Since $I$ is max, $xR + I = R \implies 1 \in xR + I$. Thus $\exists r \in R, i \in I$ st.
+  \begin{equation*}
+    1 = xr + i \implies (x + I)(r + I) = 1 + I = [1]
+  \end{equation*}
+  \textbf{This next part can be skipped} \\
+  ``$\impliedby$'' Ass. $R/I$ is a field and let $I \subset J$. Let $x \in J \setminus I$, then $\exists y \in R$ st.
+  \begin{equation*}
+    xy + I = (x + I)(y + I) = (1 + I).
+  \end{equation*}
+  then $1 - xy \in I \subset J$. But also $xy \in J$, hence $1 - xy + xy = 1 \in J$ which implies $J = R$.
+\end{proof}
+
+\begin{remark}
+  Every field is a domain, which implies that any maximal ideal is also prime.
+\end{remark}

@@ -1,0 +1,40 @@
+\chapter*{6. Quadratic reciprocity}
+\begin{definition}
+  Let $p$ prime and $a \in \Z$ st. $p \nmid a$. Then $a$ is a quadratic residue modulo $p$ if there $\exists x \in \Z$ st. $x^{2} = a \pmod{p}$. Also the legendre symbol is defined as
+  \begin{equation*}
+    \left(\frac{a}{p}\right) = \begin{cases} 0 & \text{ if } p \mid a \\ 1 & \text{ if $a$ is a QR} \\ -1 & \text{ otherwise.} \end{cases}
+  \end{equation*}
+\end{definition}
+\begin{proposition}
+  Let $p$ prime, st. $p \neq 2$, then half the numbers $1, 2, \ldots, p - 1$ are QR.
+\end{proposition}
+\begin{proof}
+  Let $\varphi: \F^{*}_{p} \to \F^{*}_{p}$ be defined by $\varphi: n \mapsto n^{2}$. Then $\varphi$ is a group hom. \\ (with $\cdot$ as operation). Now $ker(\varphi) = \{-1, 1\}$. Now by the ring isomorphism theorem
+  \begin{equation*}
+    Im(\varphi) \cong \F^{*}_{p} / ker(\varphi)
+  \end{equation*}
+  However this implies that $\lvert Im (\varphi) \rvert = \dfrac{p - 1}{2}$.
+\end{proof}
+\begin{lemma}
+  Let $p$ be prime, and $x \in \Z$, then
+  \begin{equation*}
+    x^{2} \equiv 1 \pmod{p} \implies x \equiv \pm 1 \pmod{p}
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}
+  Let $p$ prime, st. $p \neq 2$ and $p \nmid a$ then $\left(\frac{a}{p}\right) = a^{\frac{p - 1}{2}} \pmod{p}$
+\end{theorem}
+\begin{proof}
+  If $a$ is a quadratic residue then $\exists x \in \Z$ st. $x^{2} \equiv a \pmod{p}$. Thus
+  \begin{equation*}
+    a^{\frac{p - 1}{2}} \equiv (x^{2})^{\frac{p - 1}{2}} = x^{p - 1} \equiv 1 \pmod{p}
+  \end{equation*}
+  by Eulers theorem ($a^{\varphi(n)} \equiv 1 \pmod{n}$), where $\varphi(p) = p - 1$, this is also known as (Fermats little theorem).
+  However $\left(\dfrac{a}{p}\right) = 1$ which concludes this case.
+  $x^{\frac{p - 1}{2}} - 1$ has at most $\frac{p - 1}{2}$ roots, so non quadratic residues cannot be roots, since there are $\frac{p - 1}{2}$ quadratic residues by the prop. However $\left(a^{\frac{p - 1}{2}}\right)^{2} = a^{p - 1} \equiv 1 \pmod{p}$ for all $a \in \Z$. By the lemma this implies
+  \begin{equation*}
+    a^{\frac{p - 1}{2}} \equiv \pm 1 \pmod{p}
+  \end{equation*}
+  however the quadratic residues are the solutions to the equation $x^{\frac{p - 1}{2}} \equiv 1 \pmod{p}$, thus $x^{\frac{p - 1}{2}} \equiv -1 \pmod{p}$, when $x$ is not a quadratic residue.
+\end{proof}

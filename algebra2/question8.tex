@@ -1,0 +1,29 @@
+\chapter*{8. Berlekamps algorithm}
+\begin{proposition}
+  Let $f \in \F_{p}[x]$ be non constant, and let $deg(f) = d$. Then $\F_{p}[x] \setminus \gen{f}$ is a $\F_{p}$ vec space of dim $d$.
+\end{proposition}
+\begin{theorem}
+Let $f \in \F_{p}[x]$ be a non-constant poly, let $R = \F_{p}[x] / \gen{f}$ and $F: R \to R$ be the frobenius map. Then $f$ is irr. iff $ker(F) = \{0\}$ and $ker(F - I) = \F_{p}$
+\end{theorem}
+\begin{proof}
+  ``$\impliedby$'' Assume $ker(f) = \{0\}$ and $ker(F - I) = \F_{p}$. We will proof that $f$ is irr. by showing that $R$ is a field.
+  % TODO: NOTE THAT R IS A VECTOR SPACE
+  Let $a \in R$ st. $a \neq 0$, define $\varphi: R \to R$ as $x \mapsto a \cdot x$. Now let $x \in ker(\varphi) \cap Im(\varphi) \neq \emptyset$, since $0$ is in the set. Then $x = ay$ for some $y \in R$ and $ax = 0$.
+  \begin{equation*}
+    F(x) = F(ay) = a^{p}y^{p} = (a^{p - 1}y^{p - 1})(ay) = (a^{p - 2}y^{p - 1})ax = 0
+  \end{equation*}
+  However $ker(F) = \{0\}$ by our ass. and thus $x = 0 \implies ker(\varphi) \cap Im(\varphi) = \{0\}$ and since $ker(\varphi) + Im(\varphi) = R$, by the fondemental theorem of linear maps. We have
+  \begin{equation*}
+    ker(\varphi) \oplus Im(\varphi) = R
+  \end{equation*}
+  thus we can write $1 = \alpha + \beta$ where $\alpha \in ker(\varphi)$ and $\beta \in Im(\varphi)$. We have
+  \begin{equation*}
+    \varphi(F(\alpha)) = a \alpha^{p} = \varphi(\alpha) \alpha^{p - 1} = 0, \text{ since } \alpha \in \ker(\varphi)
+  \end{equation*}
+  which $\implies$ $F(\alpha) \in ker(\varphi)$. Now $\beta \in Im(\varphi) \implies \exists y \in R$ st. $\beta = a y$ and
+  \begin{equation*}
+    F(\beta) = \beta^{p} = a(a^{p - 1}y^{p}) \in Im(\varphi)
+  \end{equation*}
+  Now since $F(\alpha) + F(\beta) = F(\alpha + \beta) = F(1) = 1$ thus since the sum is direct, we have $F(\alpha) = \alpha$ and $F(\beta) = \beta$. However this implies $F(\alpha) - \alpha = F(\beta) - \beta = 0$ which $\implies$ $\alpha, \beta \in ker(F-I) = \F_{p}$ by our ass. Now $\alpha \in ker(\varphi) \implies \alpha = 0$ since $a \neq 0$ and we are dealing with a field, which is a domain.
+  However $\beta = 1 \text{ and } \beta \in Im(\varphi) \implies 1 \in Im(\varphi)$ and thus there $\exists y \in R$ st. $1 = a \cdot y$. Thus $a$ is invertible which $\implies R$ is a field which $\implies f$ is irr.
+\end{proof}

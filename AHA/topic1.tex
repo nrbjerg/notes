@@ -1,0 +1,69 @@
+\chapter{Fourierrækker}
+Lad $f: [a, b] \to \C$ være en  stykvis kontinuert funktion, så benytter vi notationen \begin{align*}
+  f(x-) := \lim_{h \to 0-} f(x - h) \text{ og }  f(x+) := \lim_{h \to 0+} f(x - h)
+\end{align*}
+bemærk at det selvfølgeligt skal gælde at $x \in [a, b]$.
+\begin{lemma}
+  Lad $D_{N} = \displaystyle \frac{1}{2\pi} \sum_{n=-N}^N \e^{i n \phi}$ (dirichlet kernen) og \\ $S_{N}^{f} = \sum_{n=-N}^N c_{n} e^{in \phi}$ (Fourier partial summen) så er
+  \begin{equation}\label{eq:topic1.1}
+    D_{N}(\phi) = \frac{1}{2\pi} \frac{\e^{i (N + 1) \phi} - \e^{-i N \phi}}{\e^{i \phi} - 1}
+  \end{equation}
+  og
+  \begin{equation}\label{eq:topic1.2}
+    \int_{-\pi}^0  D_{N}(\theta) d \theta = \int_0^{\pi} D_{N}(\theta) d \theta = \frac{1}{2}
+  \end{equation}
+  og
+  \begin{equation}\label{eq:topic1.3}
+    S_{N}^{f}(\theta) = \int_{-\pi}^{\pi} f(\theta + \phi) D_{N}(\phi) d \phi
+  \end{equation}
+\end{lemma}
+\begin{remark}
+  Skal \eqref{eq:topic1.3} dette forståes som en slags endelig konvolution?
+\end{remark}
+\begin{theorem}
+  Lad $f(\theta)$ være en $2\pi$-periodisk og stykvis glat funktion. Så gælder det, at
+  \begin{equation*}
+    \lim_{N \to \infty} S_{N}^{f}(\theta) = \frac{1}{2}[f(\theta-) + f(\theta+)], \text{ for } \theta \in [-\pi, \pi]
+  \end{equation*}
+  specielt gælder det at hvis $f$ er kont. i $\theta$, så gælder:
+  \begin{equation*}
+    \lim_{N \to \infty} S_{N}^{f}(\theta) = f(\theta)
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Vi har,
+  \begin{equation*}
+    \frac{1}{2} f(\theta-) = f(\theta-) \int_{-\pi}^0 D_{N}(\theta) d \theta \text{ og } \frac{1}{2} f(\theta+) = f(\theta+)\int_0^{\pi} D_{N}(\theta) d \theta
+  \end{equation*}
+  per ligning \eqref{eq:topic1.2}. Så
+  \begin{align*}
+    S_{N}^{f}(\theta) - \frac{1}{2}\left[f(\theta-) + f(\theta+)\right] &\stackrel{(a)}= \int_{-\pi}^{0}  \left[f(\theta + \phi) - f(\theta-)\right] D_{N}(\phi) d \phi
+    + \int_{0}^{\pi}  \left[f(\theta + \phi) - f(\theta+)\right] D_{N}(\phi) d \phi \\
+    &\stackrel{(b)}= \frac{1}{2\pi} \int_{-\pi}^{\pi} g(\phi) \left[\e^{i(N + 1) \phi} - \e^{-i N \phi}\right] d \phi = c_{-N - 1} - c_{N}
+  \end{align*}
+  hvor $(a)$ følger af ligning \eqref{eq:topic1.3} og $(b)$ af ligning \eqref{eq:topic1.1}, og funktionen $g$ definieres som
+  \begin{equation*}
+    g(\phi) = \begin{cases}
+                    \dfrac{f(\theta + \phi) - f(\theta -)}{\e^{i \phi} - 1}, & -\pi < \phi < 0  \\
+                    \dfrac{f(\theta + \phi) - f(\theta +)}{\e^{i \phi} - 1}, & 0 < \phi < \pi
+                  \end{cases}
+  \end{equation*}
+  Funktion $g$ er stykvis glat for $\phi \neq 0$ (hvis $\phi = 0$, får vi et problem i brøken), da $f$ er stykvis glat. Vi har derudover at
+  \begin{align*}
+    \lim_{\phi \to 0+} g(\phi) = \lim_{\phi \to 0+} \frac{f(\theta + \phi) - f(\phi+)}{\e^{i \phi} - 1} \stackrel{(c)}= \lim_{\phi \to 0+}  \frac{f'(\theta + \phi)}{i \e^{i \phi}} = \frac{f'(\theta)}{i}
+  \end{align*}
+  hvor $(c)$ følger af l'Hopitalz regel
+  og tilsvarende at
+  \begin{align*}
+    \lim_{\phi \to 0-}  g(\phi) = \frac{f'(\theta-)}{i}
+  \end{align*}
+  så $g$ er stykvist kontinuert og dermed Riemann intergrabel på $[-\pi, \pi]$. i følge Reimann-Lebesgues lemma gælder det derfor, at
+  \begin{equation*}
+    C_{N} := \frac{1}{2\pi} \int_{-\pi}^{\pi} g(\theta) \e^{-iN \theta} d \theta \to 0 \text{ når } N \to \pm \infty
+  \end{equation*}
+  og vi har derfor at
+  \begin{equation*}
+    S_{N}^{f}(\theta) - \frac{1}{2}\left[f(\theta-) + f(\theta+)\right] = c_{-N - 1} - c_{N} \to 0 \text{ når } N  \to \infty
+  \end{equation*}
+  Hvilket afslutter beviset.
+\end{proof}

@@ -1,0 +1,18 @@
+\section{Opgave 1:}
+
+\subsection*{(a) Lad $f: G \to \C$ være en holomorf funktion på området $G \subseteq \C$, som udlukkende tager relle værdier, dvs $f(G) \subseteq \R$. Hvordan ser $f$ ud? }
+For at $f$ kan være holomorf på $G$ skal den være differentiabel i alle $z_{0} = x_{0} + iy_{0} \in G$. Opskriv $f$ som $f = u + iv$, hvor $u, v: G \to \R$. Det gælder at funktionen er (kompleks) differentiabel hvis og kun hvis, den opfylder Cauchy-Riemann ligningerne
+\begin{equation*}
+  \frac{\partial}{\partial x}u(x_{0}, y_{0}) = \frac{\partial}{\partial y} v(x_{0}, y_{0}), \quad \frac{\partial}{\partial x} v(x_{0}, y_{0}) = -\frac{\partial}{\partial y} u(x_{0}, y_{0})
+\end{equation*}
+hvor $u, v$ ses som funktioner fra $\R^{2}$ til $\R$.
+Men hvis $f(G) \subseteq \R$, har vi at $v(x, y) = 0$ for alle $z = x + iy \in G$. Heraf følger det at
+\begin{equation*}
+  \frac{\partial}{\partial x}u(x_{0}, y_{0}) = 0, \quad -\frac{\partial}{\partial y} u(x_{0}, y_{0}) = 0
+\end{equation*}
+Og heraf at der $\exists c \in \R$ således $v(x, y) = c$ for alle $z = x + iy \in G$ hvilket medfører at $f(z) = c$.
+
+
+
+\subsection*{(b) Undersøg om funtionen $f: \C \to \C$, $f(z) = \sqrt{\abs{z^{2} - \bar{z}^{2}}}$, er kompleks differentiabel i $z = 0$. Er den tilsvarende funktion $u: \R^{2} \to \R$ reel differentiabel?
+}

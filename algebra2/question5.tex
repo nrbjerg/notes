@@ -1,0 +1,30 @@
+\chapter*{5. Cyclotomic polynomials and roots of unity}
+\begin{lemma}
+  $\xi \in \C$ is a primitive $n$'th root of unity iff
+  \begin{equation*}
+    \xi = \e^{2 k\pi i / n},
+  \end{equation*}
+  st. $1 \leq k \leq n$ and $gcd(k, n) = 1$. If $\xi$ is a primitive $n$'th root of unity and $\xi^{m} = 1$ then $n | m$.
+\end{lemma}
+
+\begin{theorem}
+  Let R be a domain and $f \in R[X]\setminus \{0\}.$ If $V(f) = \{\alpha_{1}, \alpha_{2}, \ldots, \alpha_{r}\}$ then.
+  \begin{equation*}
+    f = q \prod_{k = 1}^{r} (X - \alpha_{k})^{v_{\alpha_{k}}(f)}
+  \end{equation*}
+  where $q \in R[X]$ and $V(q) = \emptyset$. And $\sum^{r}_{k = 1} v_{\alpha_{k}}(f) \leq deg(f)$.
+\end{theorem}
+
+\begin{proposition}
+  Let $n \in \N$. Let $f = X^{n} - 1$ and $g = \displaystyle\prod_{d | n} \Phi_{d}(X)$ then $f = g$
+\end{proposition}
+\begin{proof}\
+  \begin{enumerate}[i)]
+    \item Both $f$ and $g$ are monic $\therefore$, they are equal if they both have the same roots, with the same multiplicites, this follows from theorem. Since $f \text{ monic }\implies q = 1$ in the thm.
+    \item We will now proof that $f$ and $g$ have the same roots with the same multiplicites. The roots of $g$ is the $d$'th primitive roots of unity st. $d | n$, these are also roots of $f$: Let $x$ be a root of $g$ then
+    \begin{equation*}
+      d | n \implies \exists k \in \Z \text{ st. } d\cdot k = n \implies x^{n} = x^{d \cdot k} = 1^{k} = 1.
+    \end{equation*}
+    Now $\xi$ begin a root of $f$ means $\xi$ is a $n$'th root of unity, however this implies that $\xi$ is a $d$'th primitive root of unity, where $d | n$, consult the lemma. Thus $\xi$ is also a root of $g$. Lastly none of the roots have multiplicty higher than one.
+  \end{enumerate}
+\end{proof}

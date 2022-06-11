@@ -1,0 +1,37 @@
+\chapter*{4. Gaussian integers and Fermats two-square theorem.}
+
+\begin{proposition}
+  Let R be a ring st. all $r \in R \backslash R^{*}$, $r \neq 0$. has a fac. into irr. elem. Then every irr. elem in $R$ is prime iff $R$ is UFD.
+\end{proposition}
+
+\begin{proposition}
+Let $\pi \in \Z [i]$, with $N(\pi) = p$, p prime. Then $\pi$ is a prime in $\Z[i]$.
+\end{proposition}
+\begin{proof}
+  The gaussian integers is a Euclidian domain, $\therefore$ it's a unq. fac. domain. Thus every irr element is a prime element. Thus it's sufficient to show that $\pi$ is irr. Ass. $\pi = ab$, then
+  \begin{equation*}
+    N(\pi) = N(ab) = N(a)N(b) = p
+  \end{equation*}
+  since $N$ is a hom. Ass. WLOG that $N(a) = p$, then $N(b) = 1$ and $b$ is thus a unit
+  since $Z[i]^{*} = \{1, -1, i, -i\}$.
+\end{proof}
+
+\begin{theorem}[Fermat two-square]
+  For prime numbers $p \equiv 1 \; (mod \; 4)$ there $\exists! a, b \in \Z$ st. $a^{2} + b^{2} = p$.
+\end{theorem}
+\begin{proof}
+  We prove the unq.: \\
+  Ass. $p = a^{2} + b^{2}$ for some $a, b \in \Z$ and $p = c^{2} + d^{2}$ for some other $c, d \in \Z$. Then
+  \begin{equation*}
+    p = (a + i b)(a - i b) = (c + i d)(c - i d)
+  \end{equation*}
+  however by the proof of prop,
+  \begin{equation*}
+    (a + ib), (a - ib), (c + i d), (c - i d)
+  \end{equation*}
+  are all irr. Since
+  \begin{equation*}
+    N(a + ib) = N(a - ib) = N(c + i d) = N(c - i d) = p
+  \end{equation*}
+  gives two irr. fac. of $p$, however $\Z[i]$ being a Euclidian domain implies it is a UFD, and thus the fac. is the same upto multiplication by units.
+\end{proof}

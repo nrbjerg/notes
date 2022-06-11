@@ -1,0 +1,46 @@
+\chapter*{3. Types of rings: UFD, PID, Euclidian domains}
+\begin{proposition}
+  Let R be a ring st. all $r \in R \backslash R^{*}$, $r \neq 0$. has a fac. into irr. elem. Then every irr. elem in $R$ is prime iff $R$ is UFD.
+\end{proposition}
+
+
+\begin{lemma}
+  Let $R$ be a PID and $r \in R \backslash R^{*}$ and $r \neq 0$. Then $r$ has a fac. into irr. elem.
+\end{lemma}
+
+
+\begin{proposition}
+  Let $R$ be PID, that is not a field. Then $x \in R$ is irr. iff $\langle x \rangle$ is max.
+\end{proposition}
+\textbf{Skip the proof}
+\begin{proof}
+  ``$\implies$'' Let $x$ be irr. and $\langle x \rangle \subseteq \langle y \rangle$. then
+  \begin{equation*}
+    \exists z \in R \text{ st. } zy = x \implies y | x \implies \exists s \text{ st. } sy = x
+  \end{equation*}
+  now $x$ being irr. implies either $s \in R^{*} \implies \langle x \rangle = \langle y \rangle$ or $y \in R^{*} \implies \langle y \rangle = R$, since $y$ unit implies $1 \in \langle y \rangle$.
+  Thus $\langle x \rangle$ is max.\\
+  ``$\impliedby$'' Let $\langle x \rangle$ be max. Then $x = y \cdot s$ implies
+  \begin{equation*}
+    \langle x \rangle \subseteq \langle y \rangle \implies \begin{cases} \langle y \rangle = \langle x \rangle \implies s \in R^{*} \text{ (x and y are associative)} \\ \langle y \rangle = R \implies y \in R^{*} \end{cases}
+  \end{equation*}
+  which implies $x$ is irr.
+\end{proof}
+
+\begin{theorem}
+  Let $R$ be a PID, then $R$ is a UFD.
+\end{theorem}
+\begin{remark}
+  Note here that a field is trivially a UFD, since all elems. are units. Thus we can assume $R$ is not field.
+\end{remark}
+\begin{proof}\
+  \begin{enumerate}[i)]
+      \item By the pervius lemma, all $r \in R \backslash R^{*}$, $r \neq 0$, has a fac.
+      \item We show that this fac. is uniq. by showing that all irr. are prime and thus by the first prop. $R$ is a UFD.
+      \item Let $x \in R$ be irr. and assume $x | ab$ and $x \nmid a$, then $a \not \in \langle x \rangle$ and hence $\langle x \rangle \subset \langle x, a \rangle$, by the previus lemma $\langle x \rangle$ is max. and hence $\langle x, a \rangle = R$. Hence $\exists r, s \in R$ st. $rx + sa = 1$ multiplying by $b$ we get
+      \begin{equation*}
+        b(rx + sa) = brx + sab = b
+      \end{equation*}
+      since $x | ab$ it follows that $x | b$, thus $x$ is prime.
+  \end{enumerate}
+\end{proof}

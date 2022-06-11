@@ -1,0 +1,87 @@
+\chapter{Foldning og \\Fourierintergraler}
+\begin{definition}
+  For $f, g: \R \to \C$ definieres foldningen af $f$ og $g$ som
+  \begin{equation*}
+    f * g(x) := \int_{-\infty}^{\infty} f(y)g(x - y) dy = \int_{-\infty}^{\infty} f(x - y)g(y) dy
+  \end{equation*}
+  såfremt intergralet eksistere.
+\end{definition}
+\begin{remark}
+  Bemærk at her tolkes $\displaystyle \int_{-\infty}^{\infty} h(x) dx$ som $\displaystyle \lim_{n,m \to \infty} \int_{-n}^m h(x) dx$
+\end{remark}
+
+% \begin{proposition}
+%   Lad $f, g, h \in L^{1}(\R)$ så er
+%   \begin{equation*}
+%     (f * g) * h(u) = f * (g * h)(u)
+%   \end{equation*}
+% \end{proposition}
+%
+% \begin{proof}
+% \begin{align*}
+%     (f * g) * h(u) &= \int_{-\infty}^{\infty} (f * g)(x)h(u - x) dx \\
+%                    &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(y)g(x - y) dy h(u - x) dx \\
+%                    &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(y)g(x - y) h(u - x) dx dy \\
+%                    &\stackrel{(a)}= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(y)g(x - y) h(u - x) dx dy \\
+%   \end{align*}
+%   Hvor $(a)$ følger af
+%   \begin{align*}
+%     \int_{-\infty}^{\infty} g(x - y)h(u-x) dx &= \int_{-\infty}^{\infty} g(x + y - y)h(u - (x + y)) dx \\
+%                    &= \int_{-\infty}^{\infty} g(x) h((u - y) - x) dx = g * h(u - y)
+%   \end{align*}
+%   hvorfor
+%   \begin{equation*}
+%     (f * g) * h(u) = \int_{-\infty}^{\infty} f(y) (g * h)(u - y) dy = f * (g * h) (u)
+%   \end{equation*}
+%   hvilket afslutter vores bevis.
+% \end{proof}
+Vi lader $g_{\varepsilon}(x) = \dfrac{1}{\varepsilon} g \left(\dfrac{x}{\varepsilon}\right)$ og da har vi
+\begin{equation}\label{eq:topic4.1}
+  \int_a^b g_{\varepsilon}(x) dx = \int_{a/\varepsilon}^{b/\varepsilon} g(y) dy
+\end{equation}
+
+\begin{theorem}
+  Lad $g \in L^{1}(\R)$ med $\int_{-\infty}^{\infty} g(x) dx = 1$ definier
+  \begin{equation*}
+    \alpha = \int_{-\infty}^{0} g(x) dx, \quad \beta = \int_0^{\infty} g(x) dx
+  \end{equation*}
+  Antag, at $f$ er stykvis kont. og begrænset. Da gælder, at
+  \begin{equation*}
+    \lim_{\varepsilon \to 0+} f * g_{\varepsilon}(x) = \alpha f(x+) + \beta f(x-), \text{ hvor } x \in \R
+  \end{equation*}
+  specielt gælder det at hvis $f$ er kont, i $x \in \R$ er
+  \begin{equation*}
+    \lim_{\varepsilon \to 0+} f * g_{\varepsilon}(x) = f(x), \text{ hvor } x \in \R
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Bemærk at $\displaystyle \int_{-\infty}^{\infty} g(x) dx = \int_{-\infty}^{\infty} g_{\varepsilon}(x) dx$ for alle $\varepsilon > 0$. Dette giver os
+  \begin{align*}
+    f * g_{\varepsilon}(x) - \alpha f(x+) - \beta f(x-) &= \int_{-\infty}^0 \left[f(x - y)-f(x+)\right] g_{\varepsilon}(y) dy \\ &+ \int_0^{\infty} \left[f(x - y) - f(x-)\right] g_{\varepsilon}(y) dy
+  \end{align*}
+  ved at benytte ligning \eqref{eq:topic4.1}.
+  Givet $\delta > 0$, så vælges $c > 0$ således $\abs{f(x-y)-f(x-)} < \delta$ for $0 < y < c$. Vi har,
+  \begin{align*}
+    \left|\int_0^c \left[f(x - y) - f(x-)\right] g_{\varepsilon}(y) dy \right| \leq \delta \int_0^c \abs{g_{\varepsilon}(y)} dy &= \delta \int_{0}^{c/\varepsilon} \abs{g(y)} dy \\
+   &\leq \delta\int_0^{\infty} \abs{g(y)} dy \to 0
+  \end{align*}
+  når $\delta \to 0$, lad nu $m \in \R$ således at $|f(x)| \leq M$ for alle $x \in \R$ (f er jo antaget til at være begrænset) så gælder det at
+  \begin{align*}
+    \abs{\int_c^{\infty} \left[f(x - y) - f(x-)\right] g_{\varepsilon}(y) dy } &\leq 2M \int_{c}^{\infty} \abs{g_{\varepsilon}(y)} dy \\ &\leq 2M \int_{c / \varepsilon}^{\infty} \abs{g(y)} dy \to 0
+  \end{align*}
+  når $\varepsilon \to 0+$ hvilket medfører at
+  \begin{equation*}
+    \int_0^{\infty} \left[f(x - y) - f(x-)\right] g_{\varepsilon}(y) dy \to 0 \text{ når } \varepsilon \to 0+
+  \end{equation*}
+  og tilsvarende ses at
+  \begin{equation*}
+    \int_\infty^{0} \left[f(x - y) - f(x+)\right] g_{\varepsilon}(y) dy \to 0 \text{ når } \varepsilon \to 0+
+  \end{equation*}
+  dette medfører at
+  \begin{equation*}
+    f * g_{\varepsilon}(x) - \alpha f(x+) - \beta f(x-) \to 0 \text{ når } \varepsilon \to 0+ \qedhere
+  \end{equation*}
+\end{proof}
+\begin{remark}
+  Vi har $\alpha f(x+) + \beta f(x-) = (\alpha + \beta) f(x) = f(x)$ hvis $f$ er kont. i $x$.
+\end{remark}

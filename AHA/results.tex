@@ -1,0 +1,226 @@
+\chapter*{Results.}
+\begin{definition}
+Let $f: \R \to \R$ or $f: \R \to \C$, then it's called $2\pi$ periodic if $f(\theta + 2\pi) = f(\theta) \;\forall \theta \in \R$.
+\end{definition}
+
+\begin{definition}
+  Fourier rækken skrives
+  \begin{equation*}
+    f(\theta) = \frac{a_{0}}{2} + \sum_{n=1}^{\infty} [a_{n}\cos(n \theta) + b_{n} \sin(n \theta)], \quad a_{i}, b_{i} \in \R
+  \end{equation*}
+  Skrives på komplex form som
+  \begin{equation*}
+    f(\theta) = \sum_{n=-\infty}^{\infty} c_{n} \e^{in \theta}
+  \end{equation*}
+  hvor $c_{0} = \frac{a_{0}}{2}$ og $c_{n} = \frac{1}{2} (a_{n} + sign(n) i b_{n})$ for $n \in \Z$
+\end{definition}
+
+\begin{remark}
+  koefficienterne har formen
+  \begin{equation*}
+    c_{k} = \frac{1}{2\pi} \int_{-pi}^{pi} f(\theta) e^{-ik \theta} d\theta
+  \end{equation*}
+  og tilsvarende
+  \begin{align*}
+    a_{n} &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(\theta) \cos(n \theta) d\theta \\
+    b_{n} &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(\theta) \sin(n \theta) d\theta
+  \end{align*}
+  for $n \in \N$
+  Og såfremt $\phi_{n}$ definieres som $\frac{1}{\sqrt{2\pi}} \e^{in x}$ er
+  \begin{equation*}
+    c_{n} = \frac{1}{\sqrt{2\pi}} \gen{f, \phi_{n}}
+  \end{equation*}
+\end{remark}
+
+\begin{definition}
+  En $2\pi$ periodisk funktion $f$ kaldes intergrabel hvis \begin{equation*}
+    \int_{-\pi}^{\pi} \abs{f(\theta)} d \theta < \infty
+  \end{equation*}
+\end{definition}
+for intergrable $f$ er
+\begin{equation*}
+  \int_{-\pi}^{\pi} f(\theta) \e^{-ik \theta} d \theta
+\end{equation*}
+veldefinieret for alle $k \in \Z$.
+
+\begin{remark}
+  Hvis $g$ er ulige st. $g(\theta) = -g(-\theta)$, så er
+  \begin{equation*}
+    b_{n} = 0
+  \end{equation*}
+  for $n \in \N$ ellers hvis $g$ lige så er
+  \begin{equation*}
+    a_{n} = 0
+  \end{equation*}
+  for $n \in \N$
+\end{remark}
+
+\begin{theorem}[Bessel's ulighed]
+  lad $f$ være $2\pi$ periodisk, og Riemann integrable, så gælder
+  \begin{equation*}
+    \sum_{n=-\infty}^{\infty} \abs{c_{n}}^{2} \leq \frac{1}{2\pi} \int_{-\pi}^{pi} \abs{f(\theta)}^{2} d \theta
+  \end{equation*}
+\end{theorem}
+
+\begin{lemma}[Reimann-Lebesgues]
+  $f$ Riemann integrable og $2\pi$ periodisk $\implies$
+  \begin{equation*}
+    \lim_{n \to \pm \infty} c_{n} = 0
+  \end{equation*}
+\end{lemma}
+
+\begin{definition}
+En funktion $f: [a, b] \to \C$ kaldes \textbf{stykvis kont.} hvis $f$ er kont. på $[a, b]$ untagen endeligt mange punkter. $x_{1}, x_{2}, x_{k}$ hvor grænserne for højre og venstre eksister. $f$ kaldes \textbf{stykvis glat} hvis $f$ og $f'$ er stykvis kont. på $[a, b]$
+\end{definition}
+
+\begin{definition}
+  Partial summen af orden $N$ definieres som:
+  \begin{equation*}
+    S_{N}^{f} (\theta) = \sum_{n=-N}^N c_{n} \e^{in \theta}
+  \end{equation*}
+\end{definition}
+
+\begin{remark}
+  Det bemærkes at
+  \begin{equation*}
+    S_{N}^{f}(\theta) = \int_{-\pi}^{\pi} f(\theta + \phi) D_{N}(\phi) d \phi
+  \end{equation*}
+  hvor $D_{N} = \frac{1}{2\pi} \sum_{n=-N}^N \e^{in \theta}$ er den såkaldte \textbf{dirichlet kerne}.
+\end{remark}
+
+\begin{theorem}
+  Lad $f$ være $2\pi$ periodisk og stykvis glat. så gælder det at
+  \begin{equation*}
+    \lim_{n \to \infty} S_{n}^{f} (\theta) = \frac{1}{2} [f(\theta-) + f(\theta+)], \theta \in [-\pi, \pi]
+  \end{equation*}
+  specielt gælder det at $f$ kont i $\theta$ medføre at:
+  \begin{equation*}
+    \lim_{n \to \infty}  S_{n}^{f} (\theta) = f(\theta)
+  \end{equation*}
+\end{theorem}
+
+\begin{proposition}
+  Lad $f$ kont. og stykvis glat på $[-\pi, \pi]$, så gælder det at
+  \begin{equation*}
+    c'_{n} = in c_{n}
+  \end{equation*}
+  hvilket giver os en mulighed for at beregne kvotienterne for den afledte fourier række
+\end{proposition}
+\begin{remark}
+  Derudover giver dette resultat af fourier rækken for $f$ konvergere både absolut og uniformt i dette tilfælde på $[-\pi, \pi]$.
+\end{remark}
+
+\begin{proposition}
+  Cauchy-Schwarz ulighed giver at for to reelle følger $\{a_{n}\}$ og $\{b_{n}\}$ gælder at
+  \begin{equation*}
+    \sum_n a_{n} b_{n} \leq \left(\sum_n a_{n}^{2} \right)^{\frac{1}{2}} \left(\sum_n b_{n}^{2}\right)^{\frac{1}{2}}
+  \end{equation*}
+\end{proposition}
+\begin{proposition}[Weierstrass' M-test]
+  lad $f_{n}: A \to \C$ for $n \in \Z$. Hvis der findes en følge $M_{n} \in (0, \infty)$ st. $|f_{n}(x)| \leq M_{n}$ for $x \in A$, $n \in \Z$ og $\sum_{n \in \Z} M_{n} \leq \infty$, så konvergere
+  \begin{equation*}
+    \sum_{n\in \Z} f_{n}(x)
+  \end{equation*}
+  uniformt på $A$.
+\end{proposition}
+
+% SELF STUDY 1 GOES HERE
+
+\begin{theorem}
+  Suppose $f$ is $2\pi$ periodic and peicewise continues, with forier coef. $a_{n}, b_{n} c_{n}$ and let $F(\theta) = \int_0^{\theta} f(\phi) d \phi$. If $c_{0} = 0$ (this is the same as $a_{0} = 0$), then $\;\forall \theta$ we have
+  \begin{equation*}
+    F(\theta) = C_{0} + \sum_{n \neq 0} \frac{c_{n}}{in} \e^{in \theta} = C_{0} + \sum_{n=1}^{\infty} \left(\frac{a_{n}}{n} \sin(n \theta) - \frac{b_{n}}{n} \cos(n \theta)\right)
+  \end{equation*}
+  Where
+  \begin{equation*}
+    C_{0} = \frac{1}{2\pi} \int_{-\pi}^{\pi} F(\theta) d \theta
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}
+\textbf{Gibbs phenomenon}: as one adds more and more terms the paritals shums overshoot and undershoot $f$ near the discontinuity.
+\end{definition}
+
+\begin{definition}
+\begin{equation*}
+  L^{2}(a, b) = \{f \int_a^b \abs{f(x)}^{2} dx < \infty\}
+\end{equation*}
+hvor intergralet er det såkaldte lebesgue intergrale.
+\end{definition}
+\begin{theorem}
+$L^{2}(a, b)$ er et hilbertrum (fuldstændigt normeret vektorum)
+\end{theorem}
+
+\begin{theorem}[Sætningen om domineret konvergens]
+Lad $D \subseteq \R^{k}$ være et område. Antag, at $\{g_{n}\}_{n \in \N}$, er en følge af funktioner på $D$ og at $phi, g$ er funktioner på $D$, således
+\begin{enumerate}[i)]
+  \item $\phi(\mathbf{x}) \geq 0$ og $\int_{D} \phi(\mathbf{x}) d \mathbf{x} < \infty$ (Her er $d \mathbf{x}$ det såkaldte lebesgue mål)
+  \item $\abs{g_{n}(\mathbf{x})} \leq \phi(\mathbf{x})$, for alle $\mathbf{x} \in D, n \in \N$.
+  \item $g_{n}(\mathbf{x}) \to g(\mathbf{x})$ for alle $\mathbf{x} \in D$.
+\end{enumerate}
+så gælder det at
+\begin{equation*}
+  \int_{D} g_{n}(\mathbf{x}) d \mathbf{x} \to \int_{D} g(\mathbf{x}) d \mathbf{x}
+\end{equation*}
+\end{theorem}
+
+\begin{definition}
+  Følgende vektorrum spiller en stor rolle:
+  \begin{align*}
+    L^{1}(\Z) &= \{x = \{x_{n}\}_{n \in \Z} \mid \norm{x}_{1} := \sum_{n\in \Z} \abs{x_{n}} < \infty \}\\
+    L^{1}(\Z) &= \{x = \{x_{n}\}_{n \in \Z} \mid \norm{x}_{2} := \left(\sum_{n\in \Z} \abs{x_{n}}^{2}\right)^{1/2} < \infty \}\\
+    L^{\infty}(\Z) &= \{x = \{x_{n}\}_{n \in \Z} \mid \norm{x}_{\infty} := \sup_{n} \abs{x_{n}} < \infty \}
+  \end{align*}
+\end{definition}
+\begin{remark}
+  Det kan vises at $L^{1}(\Z) \subset L^{2}(\Z) \subset L^{\infty}(\Z)$, bemærk at det her er over $\Z$! og at $L^{2}(\Z)$ er et hilbertrum.
+\end{remark}
+
+\begin{definition}
+  Kroneckers delta følge:
+  \begin{equation*}
+    \delta_{n} = \begin{cases} 1, & n = 0 \\ 0, & n \neq 0 \end{cases}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}
+  Lad $y = T(x)$, hvor $T: V \to V$ være et diskrettids system.
+  \begin{itemize}
+    \item Systemet kaldes lineært hvis $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$ for alle $\alpha, \beta \in \C, x, y \in V$
+    \item Systemet kaldes tidsinvariant, hvis
+      \begin{equation*}
+        y' = T(x') \text{ hvor } \begin{cases}
+                                   x'_{n}= x_{n - k}
+                                   y'_{n}= y_{n - k}
+                                 \end{cases}
+      \end{equation*}
+      for alle $k \in \Z$
+    \item Systemet kaldes BIBO-stabilt (bounded-in, bounded-out) hvis
+      \begin{equation*}
+        x \in L^{\infty}(\Z) \implies y = T(x) \in L^{\infty}(\Z)
+      \end{equation*}
+    \item Systemet kaldes hukommelsesløst hvis for $x, x'$ gælder at
+      \begin{equation*}
+        x_{k} = x_{k}' \implies T(x)_{k} = T(x')_{k}
+      \end{equation*}
+    \item Systemet kaldes kausal hvis det for $x, x'$ og $k \in \Z$ gælder at:
+        \begin{equation*}
+          1_{-\infty, \ldots, k}x = 1_{-\infty, \ldots, k}x' \implies 1_{-\infty, \ldots, k}T(x) = 1_{-\infty, \ldots, k}T(x')
+        \end{equation*}
+      hvor $(1_{-\infty, \ldots, k}x)_{l} = \begin{cases}
+                                              x_{l}, & l\leq k\\
+                                              0, & l > k
+                                            \end{cases}$
+      for $l \in \Z$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+Lad $T: V \to V$ være både lineært og tidsinvariant, så definieres impulsresponsen som $h = T(\delta)$.
+\end{definition}
+\begin{remark}
+  Vi har
+  \begin{equation*}
+    y = T(x) =  T\left(\sum_{k\in \Z} x_{k} \delta_{n - k}\right) = \sum_{k\in \Z} x_{k} T(\delta_{n - k}) = \sum_{k\in\Z} x_{k} h_{n -k} = h * x
+  \end{equation*}
+\end{remark}

@@ -1,0 +1,40 @@
+\chapter{Plancherels ligning}
+Vi betragter en glat fkt. $f$ med komp. støtte. Den opfylder, $\hat{f} \in L^{1}(\R)$, samt $f, \hat{f} \in L^{2}(\R)$, idet
+\begin{align*}
+\int_{-\infty}^{\infty} \abs{f(x)}^{2} dx &\leq \sup_{x \in \R} \abs{f(x)} \int_{-\infty}^{\infty} \abs{f(x)} dx < \infty\\
+\int_{-\infty}^{\infty} \abs{\hat{f(\xi)}}^{2} d\xi &\leq \sup_{\xi \in \R} \abs{\hat{f(x)}} \int_{-\infty}^{\infty} \abs{\hat{f(x)}} d\xi < \infty
+\end{align*}
+for $g$ ``af samme type som'' $f$:
+\begin{align*}
+  2\pi \gen{f, g} = 2\pi \int_{-\infty}^{\infty} f(x) \overline{g(x)} dx &= \int_{-\infty}^{\infty} \left( \int_{-\infty}^{\infty} \hat{f}(\xi) \e^{ix \xi} \; d \xi \right) \overline{g(x)} \; dx \\
+  &= \int_{-\infty}^{\infty} \hat{f}(\xi) \int_{-\infty}^{\infty} \overline{\e^{-ix \xi} g(x)} \; dx \; d\xi \\
+  &= \int_{-\infty}^{\infty} \hat{f}(\xi) \overline{\hat{g}(\xi)} \; d \xi = \gen{\hat{f}, \hat{g}}.
+\end{align*}
+Special tilfælde $f = g$, får vi \textbf{Plancherels ligning}:
+\begin{equation*}
+2\pi \norm{f}^{2} = 2\pi \gen{f, f} = \gen{\hat{f}, \hat{f}} = \lvert \lvert \hat{f} \rvert \rvert^{2}
+\end{equation*}
+Vi udvider nu til $L^{2}(\R)$. For et generelt $f \in L^{2}(\R)$ vælger vi en følge $\{f_{n}\}_{n \in \N}$ af glatte fkt. med komp. støtte, hvor $\norm{f - f_{n}} \to 0$, når $n \to \infty$.
+Vi definiere så
+\begin{equation*}
+  \hat{f} = \lim_{n \to \infty} \hat{f}_{n} \quad \text{(grænseværdi i $L^{2}(\R)$)}
+\end{equation*}
+Det giver mening da $\{f_{n}\}_{n \in \N}$, nødvendigsvis er en Cauchy-følge i $L^{2}(\R)$, pga. konvergensen $f_{n} \to f$, og i følge Plancherels ligning
+\begin{equation*}
+  \norm{\hat{f}_{n} - \hat{f}_{m}}^{2} = 2\pi \norm{f_{n} - f_{m}}^{2} \to 0 \text{ når } n, m \to \infty
+\end{equation*}
+Altså er $\{\hat{f}_{n}\}_{n \in \N}$ en Cauchy-følge i det fuldstændige rum $L^{2}(\R)$. Grænseværdien $\lim_{n \to \infty} \hat{f}_{n} := \hat{f}$, eksistere altså i $L^{2}(\R)$, (da der er tale om en Cauchy følge.) \\
+
+Heraf følger det at Plancherels ligning holder for alle $f \in \L^{2}(\R)$, idet:
+\begin{equation*}
+  \norm{f}_{2}^{2} = \lim_{n \to \infty} \norm{f_{n}}^{2} = 2\pi \lim_{n \to \infty} \lvert \lvert \hat{f}_{n} \rvert \rvert^{2} = 2\pi \lvert \lvert \hat{f} \rvert \rvert^{2}
+\end{equation*}
+
+Plancherels ligning har mange anvendelser eksempelvis kan vi vise at et allpass filter bevare $L^{2}$ normen.
+Et filter $h$ kaldes allpass, hvis $\abs{H(\e^{i \omega})} = 1$.
+Lad $y = h * x$. Det gælder at
+\begin{equation*}
+  \norm{y}_{2}^{2} \stackrel{(a)}= \frac{1}{2\pi} \norm{Y}^{2} = \frac{1}{2\pi} \norm{H \cdot X}^{2} = \frac{1}{2\pi} \norm{X}^{2} \stackrel{(a)}= \norm{X}_{2}^{2}
+\end{equation*}
+hvor vi har benyttet parsevals ligning for at få lighed $(a)$ og $(a)$.
+Allpass filtre bevare altså $\norm{\cdot}_{2}$-normen (energi?).

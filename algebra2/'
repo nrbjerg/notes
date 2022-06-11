@@ -1,0 +1,12 @@
+\chapter*{8. Berlekamps algorithm}
+\begin{theorem}
+Let $f \in \F_{p}[x]$ be a non-constant poly. Then $f$ is irr. iff $ker(f) = \{0\}$ and $ker(F - I) = \F_{p}$
+\end{theorem}
+\begin{proof}
+  We will proof ``$\implies$'': So assume $f$ irr.
+  \begin{itemize}
+    \item then $ker(f) = \{0\}$, otherwise if $a \in ker(f)$, st. $a \neq 0$, then $(x - a) \mid f$, however this is a contradiction.
+    \item and $ker(F - I) = \F_{p}$. We have $F - I = g^{p} - g$, meaning $F(\lambda) = \lambd a \forall \lambda \in \F$
+  \end{itemize}
+
+\end{proof}

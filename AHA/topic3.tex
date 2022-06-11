@@ -1,0 +1,43 @@
+\chapter{DTS og filterteori}
+Et lineært tidsinvariant system $y = T(x)$, beskrevet ved $y = h * x$, hvor $h$ er impulsresponsen $h=T(\delta)$ (her er der tale om kronicer delta funktionen).
+Vi definier er den såkaldte \textbf{DTFT (discrete-time fourier transform)} af følgen $x=\{x_{n}\}_{n \in \Z }$, som
+\begin{equation*}
+  X(e^{i\omega}) = \sum_{n \in \Z} x_{n} \e^{-i n \omega} % NOTE: Here [F] uses e^{+in \omega}
+\end{equation*}
+hvis $x \in L^{2}(\Z)$, så an vi definiere den inverse transform som:
+\begin{equation*}
+  x_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(\e^{iN})\e^{in \omega} d\omega
+\end{equation*}
+
+Vi tager nu DTFT af impuls responsen $h = T(\delta)$:
+\begin{equation*}
+  H(\e^{i \omega}) = \sum_{n\in\Z} h_{n} \e^{-in \omega},
+\end{equation*}
+og givet $x \in L^{2}(\Z)$, lader vi
+\begin{equation*}
+  X(\e^{i \omega}) = \sum_{n\in\Z} x_{n} \e^{-in \omega},
+\end{equation*}
+$H(\e^{i \omega})$ kaldes for frekvens responsen af filtret.
+
+\begin{proposition}
+  For $y = h * x$ gælder det at $Y(\e^{i \omega}) = H(\e^{i \omega}) X(\e^{i \omega})$
+\end{proposition}
+\begin{proof}
+  \begin{align*}
+    Y(\e^{i \omega}) &= \sum_{n\in\Z} y_{n} \e^{-in \omega} \\
+                &= \sum_{n\in\Z} \left(\sum_{k\in\Z}x_{k}h_{n - k}\right)\e^{-in \omega} \\
+                &= \sum_{n\in\Z} \sum_{k\in\Z}x_{k}\e^{-ik \omega}h_{n - k}\e^{-i(n - k) \omega} \\
+                &=  \sum_{k\in\Z}x_{k}\e^{-ik \omega} \left(\sum_{n\in\Z} h_{n - k}\e^{-i(n - k) \omega}\right) \\
+                &= X(\e^{i \omega})H(\e^{i \omega})
+  \end{align*}
+\end{proof}
+Men da vi har ligheder hele vejen igennem kan vi vende processen om. Det vil sige at vi kan designe et $2\pi$-periodisk filter $H(\e^{i \omega})$, med ønskede egenskaber. Også definere $H$, et entydigt linært tidsinvariant system $T$
+
+\subsection*{Allpass filtre}
+Et filter $h$ kaldes allpass, hvis $\abs{H(\e^{i \omega})} = 1$.
+Lad $y = h * x$. Det gælder at
+\begin{equation*}
+  \norm{y}_{2}^{2} \stackrel{(a)}= \frac{1}{2\pi} \norm{Y}^{2} = \frac{1}{2\pi} \norm{H \cdot X}^{2} = \frac{1}{2\pi} \norm{X}^{2} \stackrel{(a)}= \norm{X}_{2}^{2}
+\end{equation*}
+hvor vi har benyttet parsevals ligning for at få lighed $(a)$ og $(a)$.
+Allpass filtre bevare altså $\norm{\cdot}_{2}$-normen (energi?).

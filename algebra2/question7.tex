@@ -1,0 +1,35 @@
+\chapter*{7. Finite fields, including the existence and/or uniqueness}
+\begin{theorem}
+  For all $n \geq 1$ and $p$, prime, there $\exists$ irr. $f \in \F_{p}[x]$, with $deg(f) = n$
+\end{theorem}
+
+\begin{corollary}
+  For all $n \geq 1$ and $p$, prime, there exists a fin. field $\F$ with $|\F| = p^{n}$.
+\end{corollary}
+\begin{proof}
+  there $\exists$ irr poly $f \in \F_{p}[x]$ with $deg(f) = n$, now let $\F = \F_{p}[x] / \gen{f}$, then $|\F| = p^{n}$  and $\F$ is field, since $f$ irr.
+\end{proof}
+
+\begin{lemma}
+  Let $\F$ be a fin. field. there $\exists$ irr. $f \in \F_{p}[x]$ with $deg(f) = n$ st. $\F \cong \F_p[x] / \gen{f}$.
+\end{lemma}
+
+
+\begin{theorem}
+If $\lvert \F \rvert = \lvert \F' \rvert = p^{n}$ then $\F \cong \F'$.
+\end{theorem}
+\begin{proof}
+  We have that $\F \cong \F_{p}[x] / \gen{f}$ for $f$ irr. with $deg(f) = p^{n}$. Let $\alpha = [x]$, so $f(\alpha) = 0$. Consider $I = \{g \in \F_{p}[x] \mid g(\alpha) = 0\} \subset F_{p}[x]$, then $I$ is an ideal and $f \in I$. Which $\implies \gen{f} \subseteq I$ but $f$ irr. $\implies \gen{f}$ max. and thus $\gen{f} = I$. \item
+
+  Since $\xi^{p^{n}} = \xi (\xi^{p^{n} - 1}) = \xi \cdot 1 = \xi$ we have $x^{p^{n}} - x \in I$ and thus $f \mid x^{p^{n}} - x$.
+
+  In $\F'[x]$ we can find $x^{p^{n}} - x = \prod_{\beta \in \F'} (x - \beta)$ since $\beta^{p^{n}} = \beta$ for all $\beta \in \F'$
+  $\therefore$ $f \in \F_{p}[x] \subseteq \F'[x]$ has a root $\alpha' \in \F'$, since it devides $x^{p^{n}} - x$. Consider the hom. $\varphi: \F_{p}[x] \to \F'$, defined as $x \mapsto \alpha'$, then $\gen{f} \subseteq ker(\varphi)$, since $\varphi(f) = f(\alpha') = 0$. But $ker(\varphi) \neq \F_{p}[x]$ and by the maximality of $\gen{f}$ we have that $\gen{f} = ker(\varphi)$. $\therefore$ we get an inj. ring hom.
+  \begin{equation*}
+    \tilde{\varphi}: \F_{p}[x] / \gen{f} \to \F'
+  \end{equation*}
+  but since $\lvert F_{p}[x] / \gen{f}\rvert = \lvert \F' \rvert$, $\tilde{\varphi}$ must be surj. And thus we have
+  \begin{equation*}
+    \F \cong \F_{p}[x] / \gen{f} \cong \F'
+  \end{equation*}
+\end{proof}

@@ -1,0 +1,27 @@
+\chapter*{2. Quotient rings, in particular $R[X]/\langle f \rangle$}
+\begin{proposition}
+  Let $f: R \to S$ be a ring hom., then $ker(f)$ is an ideal.
+\end{proposition}
+\begin{theorem}[Gauss]
+Let $\F$ be a fin. field, and $G \subseteq \F^{*}$ a subgroup, then $G$ is cyclic.
+\end{theorem}
+\begin{proposition}
+  Let $I \subset R$, be an ideal. $I$ is maximal iff $R/I$ is a field.
+\end{proposition}
+\begin{lemma}
+  Let $\F$ be a fin. field. Then $|\F| = p^{n}$ where $n \geq 1$ and $p$ prime. There $\exists$ irr. $f \in \F_{p}[x]$ with $deg(f) = n$ st. $\F \cong \F_{p}[x] / \gen{f}$.
+\end{lemma}
+
+\begin{proof}
+  $Char(\F) = p$ prime $\implies \F_{p}$ is a subring of $\F$. $\F^{*}$ is a cyclic group, by the theorem. Let $\gamma \in \F^{*}$ be the generator. (Thus every element in $\F$ is either $0$ or some power $n$ of $\gamma$.)
+  Consider the hom. $\varphi: \F_{p}[x] \to \F$, defined as $\varphi(x) = \gamma$, then
+  \begin{equation*}
+    \varphi\left(\sum^{n}_{k = 0} a_{k} x^{k}\right) = \sum^{n}_{k = 0} a_{k} \gamma^{k}
+  \end{equation*}
+  which $\implies$ $\varphi$ is surj (since $\F^{*} = \F \setminus \{0\}$, however $\varphi(0) = 0$). Now $ker(\varphi)$ is an ideal of $\F_{p}[x]$, but $\F_{p}[x]$ is a Euclidean domain and thus a PID. which $\implies$ $\exists f \in \F_{p}[x]$  st. $ker(\varphi) = \gen{f}$. Thus by the ring isomorphism theorem
+
+  \begin{equation*}
+    \F_{p}[x] / \gen{f} \cong \F
+  \end{equation*}
+  which $\implies$ $\gen{f}$ is maximial, by the proposition. This $\implies$ $f$ is irr. (since $\gen{x} \subseteq R$ is max. ideal iff $x$ irr. in $R$) Now $\lvert\F \rvert = p^{n}$ implies $deg(f) = n$
+\end{proof}
